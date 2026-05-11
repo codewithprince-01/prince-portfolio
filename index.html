@@ -1,0 +1,178 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Parmeshwar - Portfolio</title>
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- animated background shapes -->
+  <div class="bg-anim">
+    <span class="orb orb-1"></span>
+    <span class="orb orb-2"></span>
+    <span class="orb orb-3"></span>
+  </div>
+
+  <header class="site-header">
+  <div class="container header-inner">
+    <div class="brand" id="brand">
+      <img src="images/profile.jpg" alt="Parmeshwar Kumar" class="logo" id="logo">
+      <div>
+        <h1 id="brand-name">Parmeshwar Kumar</h1>
+        <p id="brand-role">Web Developer · Designer · Video Editor</p>
+      </div>
+    </div>
+    <button id="nav-toggle" class="btn small icon" aria-label="Toggle menu">&#9776;</button>
+
+    <nav id="main-nav" class="main-nav">
+      <a href="#home" class="nav-link">Home</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#skills" class="nav-link">Skills</a>
+      <a href="#projects" class="nav-link">Projects</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </nav>
+  </div>
+</header>
+
+
+
+  <main class="container main-content">
+    <section id="hero" class="hero section reveal">
+      <div class="hero-left">
+        <div class="eyebrow">Hello — I’m</div>
+        <h2 id="hero-title" class="glow">Parmeshwar Kumar</h2>
+        <p id="hero-sub" class="muted">
+          A developer & designer who turns ideas into digital products. I build web apps, design interfaces, and edit video — mixing logic and creativity.
+        </p>
+        <div class="hero-cta">
+          <a id="cta-portfolio" href="#projects" class="btn primary">View Projects</a>
+          <a id="cta-contact" href="#contact" class="btn ghost">Contact</a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat">
+            <strong>5+</strong>
+            <span>Projects</span>
+          </div>
+          <div class="stat">
+            <strong>3</strong>
+            <span>Skills Focus</span>
+          </div>
+          <div class="stat">
+            <strong>1</strong>
+            <span>Quiz Site (Preet Quiz Center)</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-right card glass reveal-zoom">
+        <div class="profile-wrap">
+          <img src="images/profile.jpg" alt="Parmeshwar" class="profile-large">
+          <div class="profile-badge">Web Dev · Designer</div>
+        </div>
+        <div class="mini-about muted">
+          <p><strong>Quick:</strong> I enjoy learning new tech and building clean, responsive UI with smooth animations.</p>
+        </div>
+        <div class="social-row">
+          <a href="https://www.instagram.com/_preet2008_?igsh=Nm5taWd4NXA3aGlq" target="_blank" rel="noopener noreferrer" class="pill">Instagram</a>
+          <a href="mailto:parmeshwarkumar4044@gmail.com" class="pill">Email</a>
+          <a href="https://www.facebook.com/share/1JjBHoaw89/" target="_blank" rel="noopener noreferrer" class="pill">Facebook</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="card section reveal">
+      <h3 data-i18n="about_title">About</h3>
+      <p id="about-text">
+        Hi, I’m Parmeshwar Kumar — a developer and designer who loves turning ideas into real digital experiences. I’m passionate about web development, coding, and creative design. I enjoy learning new technologies and combining logic with creativity to build modern, user-friendly projects.
+      </p>
+    </section>
+
+    <section id="skills" class="card section reveal">
+      <h3 data-i18n="skills_title">Skills</h3>
+      <ul id="skills-list" class="skills-grid">
+        <li>AI</li>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+        <li>Python</li>
+        <li>Figma / UI Design</li>
+        <li>Canva</li>
+        <li>Adobe</li>
+        <li>Photoshop</li>
+        <li>Coreldrow</li>
+        <li>Premiere Pro</li>
+      </ul>
+    </section>
+
+    <section id="projects" class="card section reveal">
+      <h3 data-i18n="projects_title">Projects</h3>
+      <div class="projects-grid">
+        <article class="project-card hover-glow">
+          <div class="project-head">
+            <h4>Science Campus</h4>
+            <span class="tag">Full-stack</span>
+          </div>
+          <p>Responsive quiz website with topic + difficulty selection, timer, scoreboard, language toggle and admin panel. My first major project.</p>
+          <div class="project-links">
+            <a href="https://parmeshwar-01.github.io/science-campus/" class="btn small primary">Live</a>
+            <a href="#" class="btn small ghost">Code</a>
+          </div>
+        </article>
+
+        <article class="project-card hover-glow">
+          <div class="project-head">
+            <h4>Portfolio Templates</h4>
+            <span class="tag">UI / Templates</span>
+          </div>
+          <p>Small responsive templates to practice layout, animations and accessibility.</p>
+          <div class="project-links">
+            <a href="#" class="btn small primary">Preview</a>
+            <a href="#" class="btn small ghost">Code</a>
+          </div>
+        </article>
+
+        <article class="project-card hover-glow">
+          <div class="project-head">
+            <h4>Video Editing Demos</h4>
+            <span class="tag">Motion</span>
+          </div>
+          <p>Short edits for social media — color grading & quick motion cuts.</p>
+          <div class="project-links">
+            <a href="#" class="btn small primary">Preview</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact" class="card section reveal">
+      <h3 data-i18n="contact_title">Contact</h3>
+      <p class="muted">
+        <strong>Email:</strong> <a href="mailto:parmeshwarkumar4044@gmail.com">parmeshwarkumar4044@gmail.com</a><br>
+        <strong>Phone:</strong> <a href="tel:+919153804044">+91 9153804044</a>
+      </p>
+      <form id="contact-form" class="contact-form" onsubmit="return false;" action="parmeshwarkumar4044@gmail.com" method="post" enctype="text/plain">
+        <input type="text" id="name" placeholder="Your name" required>
+        <input type="email" id="email" placeholder="Your email" required>
+        <textarea id="message" placeholder="Message..." rows="4" required></textarea>
+        <div class="form-row">
+          <button class="btn primary" id="send-btn" type="submit">Send</button>
+          <button class="btn ghost" id="reset-btn" type="reset">Reset</button>
+        </div>
+        <p class="muted small">This form is front-end only — it will not send without backend. Copy email to contact directly.</p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <small id="footer-text">© <span id="year"></span> Parmeshwar Kumar — All rights reserved</small>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,529 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Preet Quiz Center</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css" rel="stylesheet">
+  <style>
+    :root {
+      --bg-1: #04080f;
+      --bg-2: #071428;
+      --text: #f3f7ff;
+      --muted: #adbed7;
+      --accent: #00c6ff;
+      --accent-2: #0072ff;
+      --card: rgba(255, 255, 255, 0.04);
+      --border: rgba(255, 255, 255, 0.11);
+      --container: 1120px;
+      --space-sm: clamp(10px, 1.5vw, 14px);
+      --space-md: clamp(14px, 2vw, 20px);
+      --space-lg: clamp(22px, 3.4vw, 34px);
+      --section-pad: clamp(78px, 11vw, 120px);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      min-height: 100%;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background:
+        radial-gradient(900px 520px at 15% 6%, rgba(0, 198, 255, 0.15), transparent),
+        linear-gradient(180deg, var(--bg-1), var(--bg-2));
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    body.is-menu-open {
+      overflow: hidden;
+    }
+
+    .container {
+      width: min(94%, var(--container));
+      margin-inline: auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+      background: rgba(3, 9, 20, 0.86);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      animation: slideDown 0.9s ease;
+    }
+
+    .header-inner {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      position: relative;
+    }
+
+    .brand {
+      font-size: clamp(1.15rem, 2.2vw, 1.5rem);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: var(--accent);
+    }
+
+    #po-nav-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text);
+      font-size: 1.4rem;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    #po-main-nav {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    #po-main-nav a {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      padding: 10px 12px;
+      text-decoration: none;
+      color: var(--muted);
+      border-radius: 10px;
+      transition: color 0.25s ease, background 0.25s ease;
+    }
+
+    #po-main-nav a:hover {
+      color: var(--accent);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    main section {
+      padding: var(--section-pad) 0;
+      scroll-margin-top: 92px;
+    }
+
+    .hero {
+      min-height: calc(100vh - 74px);
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding-top: calc(var(--section-pad) + 8px);
+    }
+
+    .hero-card {
+      max-width: 760px;
+      width: 100%;
+      padding: clamp(20px, 4vw, 34px);
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+      border: 1px solid var(--border);
+      box-shadow: 0 18px 48px rgba(0, 0, 0, 0.45);
+      animation: fadeIn 1.2s ease;
+    }
+
+    .hero h2 {
+      font-size: clamp(2rem, 6vw, 3.3rem);
+      color: var(--accent);
+      line-height: 1.1;
+      margin-bottom: 14px;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      max-width: 60ch;
+      margin: 0 auto;
+    }
+
+    .btn {
+      margin-top: 24px;
+      min-height: 46px;
+      padding: 12px 22px;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      box-shadow: 0 10px 24px rgba(0, 114, 255, 0.36);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(0, 198, 255, 0.42);
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: clamp(1.5rem, 4.5vw, 2.2rem);
+      margin-bottom: var(--space-lg);
+    }
+
+    .topics {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-md);
+    }
+
+    .topic-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: clamp(18px, 2.6vw, 24px);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .topic-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 36px rgba(0, 198, 255, 0.24);
+    }
+
+    .topic-card i {
+      font-size: 2rem;
+      color: var(--accent);
+      margin-bottom: 10px;
+      display: inline-block;
+    }
+
+    .topic-card h3 {
+      margin-bottom: 8px;
+    }
+
+    .topic-card p {
+      color: var(--muted);
+      font-size: 0.97rem;
+    }
+
+    #contact .contact-card {
+      max-width: 760px;
+      margin: 0 auto;
+      text-align: center;
+      padding: clamp(20px, 4vw, 28px);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+    }
+
+    #contact p {
+      color: var(--muted);
+      font-size: 1.02rem;
+    }
+
+    footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.09);
+      padding: 24px 0;
+      text-align: center;
+      color: #90a0ba;
+      font-size: 0.92rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.75s ease, transform 0.75s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes slideDown {
+      from {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.98);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @media (max-width: 992px) {
+      .topics {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 768px) {
+      .site-header {
+        border-bottom-color: rgba(255, 255, 255, 0.12);
+      }
+
+      .header-inner {
+        min-height: 66px;
+      }
+
+      #po-nav-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      #po-main-nav {
+        position: absolute;
+        top: calc(100% + 8px);
+        left: 0;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        padding: 10px;
+        border-radius: 12px;
+        border: 1px solid var(--border);
+        background: rgba(3, 10, 21, 0.98);
+        box-shadow: 0 20px 44px rgba(0, 0, 0, 0.52);
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transform: translateY(-8px);
+        transition: opacity 0.24s ease, transform 0.24s ease, visibility 0.24s ease;
+      }
+
+      #po-main-nav.active {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: translateY(0);
+      }
+
+      #po-main-nav a {
+        width: 100%;
+        justify-content: flex-start;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      main section {
+        padding: clamp(68px, 14vw, 94px) 0;
+        scroll-margin-top: 82px;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .hero-card {
+        text-align: left;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .topics {
+        grid-template-columns: 1fr;
+      }
+
+      .topic-card {
+        width: 100%;
+        max-width: 100%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        width: 95%;
+      }
+
+      .brand {
+        font-size: 1.05rem;
+      }
+
+      .hero-card {
+        padding: 16px;
+      }
+
+      #contact p {
+        font-size: 0.97rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <h1 class="brand">Preet Quiz Center</h1>
+      <button
+        id="po-nav-toggle"
+        aria-label="Toggle menu"
+        aria-controls="po-main-nav"
+        aria-expanded="false"
+      >&#9776;</button>
+
+      <nav id="po-main-nav">
+        <a href="#home">Home</a>
+        <a href="#topics">Topics</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="hero-card reveal">
+          <h2>Challenge Your Mind</h2>
+          <p>Sharpen your skills with quizzes on Science, Math, C Language, C++, and DCA - all in one place.</p>
+          <button class="btn" type="button">Start Quiz</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="topics">
+      <div class="container">
+        <h2 class="section-title reveal">Quiz Topics</h2>
+        <div class="topics">
+          <article class="topic-card reveal">
+            <i class="ri-flask-line"></i>
+            <h3>Science</h3>
+            <p>Explore the wonders of physics, chemistry, and biology.</p>
+          </article>
+          <article class="topic-card reveal">
+            <i class="ri-function-line"></i>
+            <h3>Mathematics</h3>
+            <p>Test your problem-solving and logical thinking.</p>
+          </article>
+          <article class="topic-card reveal">
+            <i class="ri-code-s-slash-line"></i>
+            <h3>C Language</h3>
+            <p>Master the fundamentals of C programming.</p>
+          </article>
+          <article class="topic-card reveal">
+            <i class="ri-braces-line"></i>
+            <h3>C++</h3>
+            <p>Enhance your object-oriented programming skills.</p>
+          </article>
+          <article class="topic-card reveal">
+            <i class="ri-computer-line"></i>
+            <h3>DCA</h3>
+            <p>Boost your computer application knowledge.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-card reveal">
+          <h2 class="section-title">Contact Us</h2>
+          <p>For any support or suggestion, reach out at <b>preetquizcenter@gmail.com</b>.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Preet Quiz Center | Designed by Preet</p>
+  </footer>
+
+  <script>
+    const MOBILE_WIDTH = 768;
+    const poToggle = document.getElementById('po-nav-toggle');
+    const poNav = document.getElementById('po-main-nav');
+
+    if (poToggle && poNav) {
+      const MENU_OPEN_ICON = '\u2715';
+      const MENU_CLOSED_ICON = '\u2630';
+
+      const setNavState = (open) => {
+        poNav.classList.toggle('active', open);
+        poToggle.textContent = open ? MENU_OPEN_ICON : MENU_CLOSED_ICON;
+        poToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        document.body.classList.toggle('is-menu-open', open && window.innerWidth <= MOBILE_WIDTH);
+      };
+
+      const closeNav = () => setNavState(false);
+
+      poToggle.textContent = MENU_CLOSED_ICON;
+      poToggle.setAttribute('aria-expanded', 'false');
+
+      poToggle.addEventListener('click', (event) => {
+        event.stopPropagation();
+        setNavState(!poNav.classList.contains('active'));
+      });
+
+      poNav.addEventListener('click', (event) => {
+        event.stopPropagation();
+      });
+
+      poNav.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', closeNav);
+      });
+
+      document.addEventListener('click', (event) => {
+        if (window.innerWidth > MOBILE_WIDTH) return;
+        if (!poNav.classList.contains('active')) return;
+
+        if (!poNav.contains(event.target) && !poToggle.contains(event.target)) {
+          closeNav();
+        }
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && poNav.classList.contains('active')) {
+          closeNav();
+        }
+      });
+
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > MOBILE_WIDTH) {
+          closeNav();
+        } else if (!poNav.classList.contains('active')) {
+          document.body.classList.remove('is-menu-open');
+        }
+      });
+    }
+
+    const revealEls = document.querySelectorAll('.reveal');
+
+    const activateReveal = (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          observer.unobserve(entry.target);
+        }
+      });
+    };
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(activateReveal, { threshold: 0.16 });
+      revealEls.forEach((el) => observer.observe(el));
+    } else {
+      revealEls.forEach((el) => el.classList.add('active'));
+    }
+  </script>
+</body>
+</html>
